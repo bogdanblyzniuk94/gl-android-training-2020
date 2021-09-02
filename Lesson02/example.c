@@ -16,3 +16,8 @@ void symbolsCounter()
 {
     //future implementation of symbolsCounter function
 }
+
+void translateSpainish()
+{
+    //Spainish translator
+}
