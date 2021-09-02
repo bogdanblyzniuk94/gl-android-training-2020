@@ -15,5 +15,4 @@ void showMessage(void)
 void symbolsCounter()
 {
     //future implementation of symbolsCounter function
-    //add some text
 }
