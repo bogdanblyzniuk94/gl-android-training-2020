@@ -3,33 +3,28 @@ package com.example.servicestorageapp;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.widget.Toast;
+import android.os.RemoteException;
 
 public class MyStorageService extends Service {
 
+    public String storageMessage = "";
+
+    private IMyAidlInterface.Stub mService = new IMyAidlInterface.Stub() {
+        @Override
+        public void saveData(String message) throws RemoteException {
+            storageMessage = message;
+        }
+
+        @Override
+        public String loadData() throws RemoteException {
+            return storageMessage;
+        }
+    };
+
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-
-        return null;
+        return mService;
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this, "Hello World!", Toast.LENGTH_LONG).show();
-        //return super.onStartCommand(intent, flags, startId);
-
-        return START_STICKY;
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
 }
